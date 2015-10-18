@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gw2">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GW2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="gw2.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+<body ng-controller="LangCtrl">
+
+<div class="container">
+    <h2>Simple form</h2>
+    <form role="form">
+        <div class="form-group">
+            <label for="language">Idioma &middot; Language &middot; Langue &middot; Sprache:</label>
+            <select id="language" class="form-control" ng-model="lang" ng-change="persist()"
+                    ng-options="key as value for (key, value) in langs">
+            </select>
+        </div>
+        <p>selected: {{langs[lang]}}</p>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>
