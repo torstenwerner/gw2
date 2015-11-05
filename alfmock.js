@@ -1,11 +1,11 @@
 angular.module('alfmock', []).
 
-controller('AlfCtrl', function () {
+controller('AlfCtrl', function ($location) {
     var vm = this;
 
     vm.person = {};
 
-    vm.submit = function () {
+    vm.submit = function() {
         vm.person = {
             firstName: 'Torsten',
             lastName: 'Werner',
