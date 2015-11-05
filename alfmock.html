@@ -15,7 +15,7 @@
 </head>
 <body ng-controller="AlfCtrl as alf">
 
-<div class="jumbotron vertical-center" ng-hide="alf.person.signedIn">
+<div class="jumbotron vertical-center" ng-hide="alf.storage.person.signedIn">
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
             <form name="alf.loginForm" ng-submit="alf.submit()"
@@ -27,12 +27,12 @@
                     <div class="form-group">
                         <label for="username">Benutzer:</label>
                         <input type="text" id="username" name="username" class="form-control"
-                               ng-model="alf.person.userName" required autofocus/>
+                               ng-model="alf.storage.person.userName" required autofocus/>
                     </div>
                     <div class="form-group">
                         <label for="password">Kennwort:</label>
                         <input type="password" id="password" name="password" class="form-control"
-                               ng-model="alf.person.password" required/>
+                               ng-model="alf.storage.person.password" required/>
                     </div>
                     <button type="submit" class="btn btn-primary center-block" ng-disabled="!alf.loginForm.$valid">
                         Anmelden
@@ -46,12 +46,12 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default" ng-show="alf.person.signedIn">
+<nav class="navbar navbar-default" ng-show="alf.storage.person.signedIn">
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <p class="navbar-text">{{ alf.person.firstName }} {{ alf.person.lastName }}
-                    &lt;{{ alf.person.email }}&gt;</p>
+                <p class="navbar-text">{{ alf.storage.person.firstName }} {{ alf.storage.person.lastName }}
+                    &lt;{{ alf.storage.person.email }}&gt;</p>
             </li>
             <li>
                 <button type="button" class="btn btn-primary navbar-btn" ng-click="alf.logout()">Abmelden</button>
@@ -60,7 +60,7 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container" ng-show="alf.storage.person.signedIn">
     <h1>Hello to Alfmock!</h1>
     <p class="lead">Jetzt wird es interessant.</p>
     <p>Naja, wollen nicht zuviel versprechen.</p>
