@@ -45,15 +45,19 @@
     </div>
 </div>
 
-<div class="container">
-    <div ng-show="alf.person.signedIn">
-        <h3>Hallo {{ alf.person.firstName }} {{ alf.person.lastName }}!</h3>
-
-        <p>Sie sind angemeldet als <i>{{ alf.person.userName }}</i> und haben die E-Mailadresse
-            <i>{{ alf.person.email }}</i>.</p>
-        <button class="btn btn-default" ng-click="alf.logout()">Abmelden</button>
+<nav class="navbar navbar-default" ng-if="alf.person.signedIn">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <p class="navbar-text">{{ alf.person.firstName }} {{ alf.person.lastName }}
+                    &lt;{{ alf.person.email }}&gt;</p>
+            </li>
+            <li>
+                <button type="button" class="btn btn-primary navbar-btn" ng-click="alf.logout()">Abmelden</button>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
 
 </body>
 </html>
