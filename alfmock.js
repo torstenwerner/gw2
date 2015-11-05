@@ -1,22 +1,23 @@
-angular.module('alfmock', []).
+angular.module('alfmock', ['ngStorage']).
 
-controller('AlfCtrl', function ($location) {
+controller('AlfCtrl', function ($sessionStorage) {
     var vm = this;
 
-    vm.person = {};
+    vm.person = $sessionStorage.$default({
+        person: {}
+    }).person;
 
     vm.submit = function() {
-        vm.person = {
+        vm.person = $sessionStorage.person = {
             firstName: 'Torsten',
             lastName: 'Werner',
             email: 'torsten.werner@voellig.egal',
-            userName: vm.person.userName,
             signedIn: true
-        }
+        };
     };
 
     vm.logout = function () {
         vm.logoutmsg = 'Sie wurden erfolgreich abgemeldet.';
-        vm.person = {};
+        vm.person = $sessionStorage.person = {};
     }
 });
