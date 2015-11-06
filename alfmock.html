@@ -27,18 +27,20 @@
                     <div class="form-group">
                         <label for="username">Benutzer:</label>
                         <input type="text" id="username" name="username" class="form-control"
-                               ng-model="alf.storage.person.userName" required autofocus/>
+                               ng-model="alf.storage.person.userName" required autofocus
+                               placeholder="Ihr Benutzername im Autorensystem"/>
                     </div>
                     <div class="form-group">
                         <label for="password">Kennwort:</label>
                         <input type="password" id="password" name="password" class="form-control"
-                               ng-model="alf.storage.person.password" required/>
+                               ng-model="alf.storage.person.password" required
+                               placeholder="Ihr Passwort"/>
                     </div>
                     <button type="submit" class="btn btn-primary center-block" ng-disabled="!alf.loginForm.$valid">
                         Anmelden
                     </button>
                 </div>
-                <div class="panel-footer" ng-show="alf.logoutmsg">
+                <div class="panel-footer text-success" ng-show="alf.logoutmsg">
                     {{ alf.logoutmsg }}
                 </div>
             </form>
@@ -62,7 +64,9 @@
 
 <div class="container" ng-show="alf.storage.person.signedIn">
     <h1>Hello to Alfmock!</h1>
+
     <p class="lead">Jetzt wird es interessant.</p>
+
     <p>Naja, wollen nicht zuviel versprechen.</p>
 </div>
 
