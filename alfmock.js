@@ -11,6 +11,7 @@ controller('AlfCtrl', function ($sessionStorage, $timeout) {
 
     vm.submit = function () {
         vm.loading = true;
+        delete vm.logoutmsg;
         $timeout(1000).then(function () {
             vm.loading = false;
             vm.storage.person = {
@@ -26,7 +27,7 @@ controller('AlfCtrl', function ($sessionStorage, $timeout) {
         vm.loading = true;
         $timeout(1000).then(function() {
             vm.loading = false;
-            vm.logoutmsg = 'Sie wurden erfolgreich abgemeldet.';
+            vm.logoutmsg = true;
             vm.storage.person = {};
         });
     }
