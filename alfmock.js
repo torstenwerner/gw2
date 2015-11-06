@@ -1,23 +1,33 @@
 angular.module('alfmock', ['ngStorage']).
 
-controller('AlfCtrl', function ($sessionStorage) {
+controller('AlfCtrl', function ($sessionStorage, $timeout) {
     var vm = this;
 
     vm.storage = $sessionStorage.$default({
         person: {}
     });
 
-    vm.submit = function() {
-        vm.storage.person = {
-            firstName: 'Torsten',
-            lastName: 'Werner',
-            email: 'torsten.werner@voellig.egal',
-            signedIn: true
-        };
+    vm.loading = false;
+
+    vm.submit = function () {
+        vm.loading = true;
+        $timeout(1000).then(function () {
+            vm.loading = false;
+            vm.storage.person = {
+                firstName: 'Torsten',
+                lastName: 'Werner',
+                email: 'torsten.werner@voellig.egal',
+                signedIn: true
+            };
+        });
     };
 
     vm.logout = function () {
-        vm.logoutmsg = 'Sie wurden erfolgreich abgemeldet.';
-        vm.storage.person = {};
+        vm.loading = true;
+        $timeout(1000).then(function() {
+            vm.loading = false;
+            vm.logoutmsg = 'Sie wurden erfolgreich abgemeldet.';
+            vm.storage.person = {};
+        });
     }
 });
