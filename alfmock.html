@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Alfresco</title>
+    <script src="bower_components/pdfjs-dist/build/pdf.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+    <script src="bower_components/angular-pdf-viewer/dist/angular-pdf-viewer.min.js"></script>
     <script src="alfmock.js"></script>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -97,12 +99,32 @@
     </div>
 </nav>
 
-<div class="container" ng-show="alf.storage.person.signedIn">
+<div class="container" ng-show="alf.storage.person.signedIn" ng-controller="PdfController as pdfCtrl">
     <h3>Vorschau</h3>
+
     <p ng-show="alf.loadpdf">
         <span class="glyphicon glyphicon-refresh spinner" aria-hidden="true"></span> Die Vorschau wird geladen.
     </p>
-    <object ng-show="!alf.loadpdf" data="BIBB-BAuA-17.pdf" type="application/pdf" width="100%" height="1000px"></object>
+    <div ng-show="!alf.loadpdf">
+        Seite {{ pdfCtrl.getCurrentPage() }} / {{ pdfCtrl.getPageCount() }}
+        <button class="btn btn-default" ng-click="pdfCtrl.prev()">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> Zurück
+        </button>
+        <button class="btn btn-default" ng-click="pdfCtrl.next()">
+            Weiter <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-default" ng-click="pdfCtrl.zoomIn()">
+            <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span> Vergrößern
+        </button>
+        <button class="btn btn-default" ng-click="pdfCtrl.zoomOut()">
+            <span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> Verkleinern
+        </button>
+        <a href="BIBB-BAuA-17.pdf" class="btn btn-default" target="_blank">
+            <span class="glyphicon glyphicon-download"></span> Download
+        </a>
+    </div>
+    <pdf-viewer ng-show="!alf.loadpdf" delegate-handle="preview" url="'BIBB-BAuA-17.pdf'"
+                show-toolbar="false"></pdf-viewer>
 </div>
 
 </body>

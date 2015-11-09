@@ -18,6 +18,8 @@
   ],
   "dependencies": {
     "angular": "~1.4.7",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "angular-pdf-viewer": "~0.2.9",
+    "pdfjs-dist": "~1.2.85"
   }
 }

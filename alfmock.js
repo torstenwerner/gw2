@@ -1,4 +1,4 @@
-angular.module('alfmock', ['ngStorage']).
+angular.module('alfmock', ['ngStorage', 'pdf']).
 
 controller('AlfCtrl', function ($sessionStorage, $timeout) {
     var vm = this;
@@ -45,4 +45,32 @@ controller('AlfCtrl', function ($sessionStorage, $timeout) {
             vm.storage.person = {};
         });
     }
+}).
+
+controller('PdfController', function (pdfDelegate) {
+    var vm = this;
+
+    vm.getCurrentPage = function() {
+        return pdfDelegate.$getByHandle('preview').getCurrentPage();
+    };
+
+    vm.getPageCount = function() {
+        return pdfDelegate.$getByHandle('preview').getPageCount();
+    };
+
+    vm.prev = function() {
+        pdfDelegate.$getByHandle('preview').prev();
+    };
+
+    vm.next = function() {
+        pdfDelegate.$getByHandle('preview').next();
+    };
+
+    vm.zoomIn = function() {
+        pdfDelegate.$getByHandle('preview').zoomIn();
+    };
+
+    vm.zoomOut = function() {
+        pdfDelegate.$getByHandle('preview').zoomOut();
+    };
 });
