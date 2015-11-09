@@ -98,11 +98,11 @@
 </nav>
 
 <div class="container" ng-show="alf.storage.person.signedIn">
-    <h1>Hello to Alfmock!</h1>
-
-    <p class="lead">Jetzt wird es interessant.</p>
-
-    <p>Naja, wollen nicht zuviel versprechen.</p>
+    <h3>Vorschau</h3>
+    <p ng-show="alf.loadpdf">
+        <span class="glyphicon glyphicon-refresh spinner" aria-hidden="true"></span> Die Vorschau wird geladen.
+    </p>
+    <object ng-show="!alf.loadpdf" data="BIBB-BAuA-17.pdf" type="application/pdf" width="100%" height="1000px"></object>
 </div>
 
 </body>

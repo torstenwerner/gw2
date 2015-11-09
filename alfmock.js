@@ -9,6 +9,8 @@ controller('AlfCtrl', function ($sessionStorage, $timeout) {
 
     vm.loading = false;
 
+    vm.loadpdf = true;
+
     vm.submit = function () {
         vm.loading = true;
         delete vm.logoutmsg;
@@ -25,7 +27,13 @@ controller('AlfCtrl', function ($sessionStorage, $timeout) {
             } else {
                 delete vm.storage.person.password;
                 vm.errormsg = true;
+                return $q.reject('error')
             }
+        }).then(function () {
+            vm.loadpdf = true;
+            return $timeout(1000);
+        }).then(function () {
+            vm.loadpdf = false;
         });
     };
 
