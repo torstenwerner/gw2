@@ -12,20 +12,26 @@ controller('AlfCtrl', function ($sessionStorage, $timeout) {
     vm.submit = function () {
         vm.loading = true;
         delete vm.logoutmsg;
+        delete vm.errormsg;
         $timeout(1000).then(function () {
             vm.loading = false;
-            vm.storage.person = {
-                firstName: 'Torsten',
-                lastName: 'Werner',
-                email: 'torsten.werner@voellig.egal',
-                signedIn: true
-            };
+            if (vm.storage.person.userName == 'test' && vm.storage.person.password == 'test') {
+                vm.storage.person = {
+                    firstName: 'Torsten',
+                    lastName: 'Werner',
+                    email: 'torsten.werner@voellig.egal',
+                    signedIn: true
+                };
+            } else {
+                delete vm.storage.person.password;
+                vm.errormsg = true;
+            }
         });
     };
 
     vm.logout = function () {
         vm.loading = true;
-        $timeout(1000).then(function() {
+        $timeout(1000).then(function () {
             vm.loading = false;
             vm.logoutmsg = true;
             vm.storage.person = {};
